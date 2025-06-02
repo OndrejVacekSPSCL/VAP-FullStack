@@ -1,0 +1,25 @@
+{
+  "name": "vap-fullstack",
+  "version": "1.0.0",
+  "description": "Evidence úkolů v týmu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node database/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OndrejVacekSPSCL/VAP-FullStack.git"
+  },
+  "author": "Ondřej Vacek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OndrejVacekSPSCL/VAP-FullStack/issues"
+  },
+  "homepage": "https://github.com/OndrejVacekSPSCL/VAP-FullStack#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}
