@@ -1,6 +1,12 @@
--- Vytvor tabulku "items"
-CREATE TABLE IF NOT EXISTS items ( 
+CREATE TABLE IF NOT EXISTS tasks ( 
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL, 
-  description TEXT
+  title TEXT NOT NULL, 
+  status TEXT
+);
+
+CREATE TABLE IF NOT EXISTS team_members (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  firstname TEXT NOT NULL,
+  lastname TEXT NOT NULL,
+  email TEXT NOT NULL
 );

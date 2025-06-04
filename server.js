@@ -11,8 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API routes
-const apiRoutes = require('./api/api');
-app.use('/api', apiRoutes);
+const tasksRoutes = require('./api/tasks');
+app.use('/api', tasksRoutes);
+
+const membersRoutes = require('./api/members');
+app.use('/api', membersRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

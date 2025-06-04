@@ -5,44 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>
     <h1>Todo List</h1>
     <section>
         <h2>Přidat nový úkol</h2>
-        <form id="todo-form">
-            <div> <label for="name">Název úkolu:</label>
-                <input type="text" id="name" name="name" required>
+        <form id="tasks-form">
+            <div> <label for="title">Task name:</label>
+                <input type="text" id="title" name="title" required>
             </div>
-            <div> <label for="description">Popis:</label>
-                <textarea id="description" name="description"></textarea>
+            <div> <label for="status">Status:</label>
+                <textarea id="status" name="status"></textarea>
             </div>
-            <div> <button type="submit">Přidat úkol</button>
+            <div> <button type="submit">Create task</button>
+            </div>
+        </form>
+    </section>
+    <section>
+        <h2>Přidat novou osobu</h2>
+        <form id="members-form">
+            <div> <label for="firstname">Jméno:</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div> <label for="lastname">Příjmení:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div> <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div> <button type="submit">Create task</button>
             </div>
         </form>
     </section>
     <section>
         <h2>Seznam úkolů</h2>
-        <ul id="todo-list"> <!-- Zde se budou zobrazovat úkoly -->
+        <ul id="tasks-list"> <!-- Zde se budou zobrazovat úkoly -->
         </ul>
     </section>
+    <section>
+        <h2>Seznam zaměstnanců</h2>
+        <ul id="members-list"> <!-- Zde se budou zobrazovat osoby -->
+        </ul>
+    </section>
+    <section>
+        <h2>Vyhledat úkol</h2>
+        <form id="task-search">
+            <div> <label for="task-id">Task id:</label>
+                <input type="number" id="task-id" name="task-id" required>
+            </div>
+            <div> <button type="submit">Search task</button>
+            </div>
+        </form>
+        <p id="searched-task"> </p>
+    </section>
+    <section>
+        <h2>Vyhledat osobu</h2>
+        <form id="member-search">
+            <div> <label for="member-id">Member id:</label>
+                <input type="number" id="member-id" name="member-id" required>
+            </div>
+            <div> <button type="submit">Search member</button>
+            </div>
+        </form>
+        <p id="searched-member"> </p>
+    </section>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', fetchTodos);
+        document.addEventListener('DOMContentLoaded', fetchTasks);
+        document.addEventListener('DOMContentLoaded', fetchMembers);
 
-        document.getElementById('todo-form').addEventListener('submit', async (e) => {
+        //POST tasks
+        document.getElementById('tasks-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const description = document.getElementById('description').value;
+            const title = document.getElementById('title').value;
+            const status = document.getElementById('status').value;
             try {
-                const response = await fetch('/api/items', {
+                const response = await fetch('/api/tasks', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, description })
+                    body: JSON.stringify({ title, status })
                 });
                 if (response.ok) {
-                    document.getElementById('todo-form').reset();
-                    fetchTodos();
+                    document.getElementById('tasks-form').reset();
+                    fetchTasks();
                 } else {
                     alert('Chyba při přidávání úkolu');
                 }
@@ -51,16 +98,94 @@
             }
         });
 
-        async function fetchTodos() {
+        //POST members
+        document.getElementById('members-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
             try {
-                const response = await fetch('/api/items');
-                const todos = await response.json();
-                const todoList = document.getElementById('todo-list');
-                todoList.innerHTML = '';
-                todos.forEach(todo => {
+                const response = await fetch('/api/team_members', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstname, lastname, email })
+                });
+                if (response.ok) {
+                    document.getElementById('members-form').reset();
+                    fetchMembers();
+                } else {
+                    alert('Chyba při přidávání osoby');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
+
+        //GET task by id
+        document.getElementById('task-search').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                const id = document.getElementById('task-id').value;
+                const response = await fetch(`/api/tasks/${id}`);
+                if (response.ok) {
+                    const task = await response.json();
+                    const searchedTask = document.getElementById('searched-task');
+                    searchedTask.innerHTML = `<strong>${task.title}</strong>: ${task.status || ''}`;
+                } else {
+                    document.getElementById('searched-task').innerHTML = 'Úkol nenalezen';
+                }
+            } catch (error) {
+                console.error('Chyba při načítání úkolu:', error);
+            }
+        });
+
+        //GET member by id
+        document.getElementById('member-search').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                const id = document.getElementById('member-id').value;
+                const response = await fetch(`/api/team_members/${id}`);
+                if (response.ok) {
+                    const member = await response.json();
+                    const searchedMember = document.getElementById('searched-member');
+                    searchedMember.innerHTML = `${member.firstname} <strong>${member.lastname}</strong>: ${member.email || ''}`;
+                } else {
+                    document.getElementById('searched-member').innerHTML = 'Osoba nenalezena';
+                }
+            } catch (error) {
+                console.error('Chyba při načítání osoby:', error);
+            }
+        });
+
+//automatické vypsání úkolů a členů týmu
+        //GET tasks
+        async function fetchTasks() {
+            try {
+                const response = await fetch('/api/tasks');
+                const tasks = await response.json();
+                const tasksList = document.getElementById('tasks-list');
+                tasksList.innerHTML = '';
+                tasks.forEach(task => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<strong>${todo.name}</strong>: ${todo.description || ''}`;
-                    todoList.appendChild(li);
+                    li.innerHTML = `<strong>${task.title}</strong>: ${task.status || ''}`;
+                    tasksList.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Chyba při načítání úkolů:', error);
+            }
+        }
+        
+        //GET members
+        async function fetchMembers() {
+            try {
+                const response = await fetch('/api/team_members');
+                const members = await response.json();
+                const membersList = document.getElementById('members-list');
+                membersList.innerHTML = '';
+                members.forEach(member => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${member.firstname} <strong>${member.lastname}</strong>: ${member.email || ''}`;
+                    membersList.appendChild(li);
                 });
             } catch (error) {
                 console.error('Chyba při načítání úkolů:', error);
