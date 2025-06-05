@@ -4,78 +4,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>Evidence úkolů v týmu</title>
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>
-    <h1>Todo List</h1>
-    <section>
-        <h2>Přidat nový úkol</h2>
-        <form id="tasks-form">
-            <div> <label for="title">Task name:</label>
-                <input type="text" id="title" name="title" required>
-            </div>
-            <div> <label for="status">Status:</label>
-                <textarea id="status" name="status"></textarea>
-            </div>
-            <div> <button type="submit">Create task</button>
-            </div>
-        </form>
-    </section>
-    <section>
-        <h2>Přidat novou osobu</h2>
-        <form id="members-form">
-            <div> <label for="firstname">Jméno:</label>
-                <input type="text" id="firstname" name="firstname" required>
-            </div>
-            <div> <label for="lastname">Příjmení:</label>
-                <input type="text" id="lastname" name="lastname" required>
-            </div>
-            <div> <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div> <button type="submit">Create task</button>
-            </div>
-        </form>
-    </section>
-    <section>
-        <h2>Seznam úkolů</h2>
-        <ul id="tasks-list"> <!-- Zde se budou zobrazovat úkoly -->
-        </ul>
-    </section>
-    <section>
-        <h2>Seznam zaměstnanců</h2>
-        <ul id="members-list"> <!-- Zde se budou zobrazovat osoby -->
-        </ul>
-    </section>
-    <section>
-        <h2>Vyhledat úkol</h2>
-        <form id="task-search">
-            <div> <label for="task-id">Task id:</label>
-                <input type="number" id="task-id" name="task-id" required>
-            </div>
-            <div> <button type="submit">Search task</button>
-            </div>
-        </form>
-        <p id="searched-task"> </p>
-    </section>
-    <section>
-        <h2>Vyhledat osobu</h2>
-        <form id="member-search">
-            <div> <label for="member-id">Member id:</label>
-                <input type="number" id="member-id" name="member-id" required>
-            </div>
-            <div> <button type="submit">Search member</button>
-            </div>
-        </form>
-        <p id="searched-member"> </p>
-    </section>
-    
+    <h1>Task Management</h1>
+    <div class="columns">
+        <section id="tasks-section">
+            <h2>Operace s Tasks</h2>
+
+            <h3>Přidat nový úkol</h3>
+            <form id="tasks-form">
+                <div> 
+                    <label for="title">Task name:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div> 
+                    <label for="status">Status:</label>
+                    <textarea id="status" name="status" required></textarea>
+                </div>
+                <button type="submit">Create task</button>
+            </form>
+
+            <h3>Seznam úkolů</h3>
+            <ul id="tasks-list"> <!-- Seznam -->
+            </ul>
+
+            <h3>Vyhledat úkol</h3>
+            <form id="task-search">
+                <div> 
+                    <label for="task-id">Task id:</label>
+                    <input type="number" id="task-id" name="task-id" required>
+                </div>
+                <p id="searched-task"> </p>
+                <button type="submit">Search task</button>
+            </form>
+
+            <h3>Aktualizovat úkol</h3>
+            <form id="task-update">
+                <div> 
+                    <label for="update-task-id">Task id:</label>
+                    <input type="number" id="update-task-id" name="update-task-id" required>
+                </div>
+                <div> 
+                    <label for="update-title">Task name:</label>
+                    <input type="text" id="update-title" name="update-title" required>
+                </div>
+                <div> 
+                    <label for="update-status">Status:</label>
+                    <textarea id="update-status" name="update-status" required></textarea>
+                </div>
+                <button type="submit">Update task</button>
+            </form>
+
+            <h3>Smazat úkol</h3>
+            <form id="task-delete">
+                <div> 
+                    <label for="delete-task-id">Task id:</label>
+                    <input type="number" id="delete-task-id" name="delete-task-id" required>
+                </div>
+                <button type="submit">Delete task</button>
+            </form>
+        </section>
+        <section id="members-section">
+            <h2>Operace s Members</h2>
+
+            <h3>Přidat novou osobu</h3>
+            <form id="members-form">
+                <div> 
+                    <label for="firstname">Jméno:</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div> 
+                    <label for="lastname">Příjmení:</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div> 
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit">Create task</button>
+            </form>
+
+            <h3>Seznam osob</h3>
+            <ul id="members-list"> <!-- Seznam -->
+            </ul>
+
+            <h3>Vyhledat osobu</h3>
+            <form id="member-search">
+                <div> 
+                    <label for="member-id">Member id:</label>
+                    <input type="number" id="member-id" name="member-id" required>
+                </div>
+                <p id="searched-member"> </p>
+                <button type="submit">Search member</button>
+            </form>
+
+            <h3>Aktualizovat osobu</h3>
+            <form id="member-update">
+                <div> 
+                    <label for="update-member-id">Member id:</label>
+                    <input type="number" id="update-member-id" name="update-member-id" required>
+                </div>
+                <div> 
+                    <label for="update-firstname">Jméno:</label>
+                    <input type="text" id="update-firstname" name="update-firstname" required>
+                </div>
+                <div> 
+                    <label for="update-lastname">Příjmení:</label>
+                    <input type="text" id="update-lastname" name="update-lastname" required>
+                </div>
+                <div> 
+                    <label for="update-email">E-mail:</label>
+                    <input type="email" id="update-email" name="update-email" required>
+                </div>
+                <button type="submit">Update member</button>
+            </form>
+
+            <h3>Smazat osobu</h3>
+            <form id="member-delete">
+                <div> 
+                    <label for="delete-member-id">Member id:</label>
+                    <input type="number" id="delete-member-id" name="delete-member-id" required>
+                </div>
+                <button type="submit">Delete member</button>
+            </form>
+        </section>
+        <section id="assignments-section">
+            <h2>Operace s Task Assignments</h2>
+            <h3>Přiřadit úkol k osobě</h3>
+            <form id="assignments-form">
+                <div>
+                    <label for="assignment-task-id">Task id:</label>
+                    <input type="number" id="assignment-task-id" name="assignment-task-id" required>
+                </div>
+                <div>
+                    <label for="assignment-member-id">Member id:</label>
+                    <input type="number" id="assignment-member-id" name="assignment-member-id" required>
+                </div>
+                <button type="submit">Assign task to member</button>
+            </form>
+            <h3>Seznam přiřazení</h3>
+            <ul id="assignments-list"> <!-- Seznam -->
+            </ul>
+        </section>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', fetchTasks);
         document.addEventListener('DOMContentLoaded', fetchMembers);
+        document.addEventListener('DOMContentLoaded', fetchAssignments);
 
+    //přidání dat
         //POST tasks
         document.getElementById('tasks-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -121,6 +202,29 @@
             }
         });
 
+        //POST assignments
+        document.getElementById('assignments-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const task_id = document.getElementById('assignment-task-id').value;
+            const member_id = document.getElementById('assignment-member-id').value;
+            try {
+                const response = await fetch('/api/assignments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ task_id, member_id })
+                });
+                if (response.ok) {
+                    document.getElementById('assignments-form').reset();
+                    fetchAssignments();
+                } else {
+                    alert('Chyba při přiřazování úkolu k osobě');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
+
+    //GET podle id
         //GET task by id
         document.getElementById('task-search').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -130,7 +234,7 @@
                 if (response.ok) {
                     const task = await response.json();
                     const searchedTask = document.getElementById('searched-task');
-                    searchedTask.innerHTML = `<strong>${task.title}</strong>: ${task.status || ''}`;
+                    searchedTask.innerHTML = `<strong>${task.title}</strong> ${task.status || ''}`;
                 } else {
                     document.getElementById('searched-task').innerHTML = 'Úkol nenalezen';
                 }
@@ -148,7 +252,7 @@
                 if (response.ok) {
                     const member = await response.json();
                     const searchedMember = document.getElementById('searched-member');
-                    searchedMember.innerHTML = `${member.firstname} <strong>${member.lastname}</strong>: ${member.email || ''}`;
+                    searchedMember.innerHTML = `${member.firstname} <strong>${member.lastname}</strong> ${member.email || ''}`;
                 } else {
                     document.getElementById('searched-member').innerHTML = 'Osoba nenalezena';
                 }
@@ -167,7 +271,7 @@
                 tasksList.innerHTML = '';
                 tasks.forEach(task => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<strong>${task.title}</strong>: ${task.status || ''}`;
+                    li.innerHTML = `<strong>[${task.id}] ${task.title}</strong> ${task.status || ''}`;
                     tasksList.appendChild(li);
                 });
             } catch (error) {
@@ -184,13 +288,117 @@
                 membersList.innerHTML = '';
                 members.forEach(member => {
                     const li = document.createElement('li');
-                    li.innerHTML = `${member.firstname} <strong>${member.lastname}</strong>: ${member.email || ''}`;
+                    li.innerHTML = `<strong>[${member.id}] ${member.firstname} ${member.lastname}</strong> ${member.email || ''}`;
                     membersList.appendChild(li);
                 });
             } catch (error) {
                 console.error('Chyba při načítání úkolů:', error);
             }
         }
+
+        //GET assignments
+        async function fetchAssignments() {
+            try {
+                const response = await fetch('/api/assignments');
+                const assignments = await response.json();
+                const assignmentsList = document.getElementById('assignments-list');
+                assignmentsList.innerHTML = '';
+                assignments.forEach(assignment => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `Úkol <strong>[${assignment.task.id}] ${assignment.task.title}</strong> přiřazen k osobě <strong>[${assignment.member.id}] ${assignment.member.firstname} ${assignment.member.lastname}</strong>`;
+                    assignmentsList.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Chyba při načítání přiřazení:', error);
+            }
+        }
+
+    //aktualizace dat
+        //PUT task
+        document.getElementById('task-update').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('update-task-id').value;
+            const title = document.getElementById('update-title').value;
+            const status = document.getElementById('update-status').value;
+            try {
+                const response = await fetch(`/api/tasks/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, status })
+                });
+                if (response.ok) {
+                    document.getElementById('task-update').reset();
+                    fetchTasks();
+                } else {
+                    alert('Chyba při aktualizaci úkolu');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
+
+        //PUT member
+        document.getElementById('member-update').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('update-member-id').value;
+            const firstname = document.getElementById('update-firstname').value;
+            const lastname = document.getElementById('update-lastname').value;
+            const email = document.getElementById('update-email').value;
+            try {
+                const response = await fetch(`/api/team_members/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstname, lastname, email })
+                });
+                if (response.ok) {
+                    document.getElementById('member-update').reset();
+                    fetchMembers();
+                } else {
+                    alert('Chyba při aktualizaci osoby');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
+
+    //mazání dat
+        //DELETE task
+        document.getElementById('task-delete').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('delete-task-id').value;
+            try {
+                const response = await fetch(`/api/tasks/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    document.getElementById('task-delete').reset();
+                    fetchTasks();
+                } else {
+                    alert('Chyba při mazání úkolu');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
+
+        //DELETE member
+        document.getElementById('member-delete').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('delete-member-id').value;
+            try {
+                const response = await fetch(`/api/team_members/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    document.getElementById('member-delete').reset();
+                    fetchMembers();
+                } else {
+                    alert('Chyba při mazání osoby');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
     </script>
 
 </body>

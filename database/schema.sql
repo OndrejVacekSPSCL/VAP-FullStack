@@ -10,3 +10,10 @@ CREATE TABLE IF NOT EXISTS team_members (
   lastname TEXT NOT NULL,
   email TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS task_assignments (
+  task_id INTEGER,
+  member_id INTEGER,
+  FOREIGN KEY (task_id) REFERENCES tasks(id),
+  FOREIGN KEY (member_id) REFERENCES team_members(id)
+);

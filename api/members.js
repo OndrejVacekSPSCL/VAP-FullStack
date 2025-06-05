@@ -31,4 +31,31 @@ router.get('/team_members/:id', (req, res) => {
   });
 });
 
+router.put('/team_members/:id', (req, res) => {
+  const { id } = req.params;
+  const { firstname, lastname, email } = req.body;
+  db.run(
+    'UPDATE team_members SET firstname = ?, lastname = ?, email = ? WHERE id = ?',
+    [firstname, lastname, email, id],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      if (this.changes === 0) return res.status(404).json({ error: 'Not Found' });
+      res.status(201).json({ message: 'Member updated' });
+    }
+  );
+});
+
+router.delete('/team_members/:id', (req, res) => {
+  const { id } = req.params;
+  db.run(
+    'DELETE FROM team_members WHERE id = ?',
+    [id],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      if (this.changes === 0) return res.status(404).json({ error: 'Not Found' });
+      res.json({ message: 'Member deleted' });
+    }
+  );
+});
+
 module.exports = router;
