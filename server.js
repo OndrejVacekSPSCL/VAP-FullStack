@@ -17,6 +17,9 @@ app.use('/api', tasksRoutes);
 const membersRoutes = require('./api/members');
 app.use('/api', membersRoutes);
 
+const taskAssignmentsRouter = require('./api/task_assignments');
+app.use('/api', taskAssignmentsRouter);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

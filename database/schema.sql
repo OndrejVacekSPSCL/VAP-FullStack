@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS team_members (
 );
 
 CREATE TABLE IF NOT EXISTS task_assignments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   task_id INTEGER,
   member_id INTEGER,
   FOREIGN KEY (task_id) REFERENCES tasks(id),

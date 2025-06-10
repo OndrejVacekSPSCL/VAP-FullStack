@@ -16,13 +16,6 @@ npm run docs:dev
 ```
 :::
 
-::: tip
-Pokud chcete spustit dokumentaci, tak použijte 
-```terminal
-npm run docs:dev
-```
-:::
-
 ::: warning
 Před prvním spuštením je potřeba spustit.
 ```terminal

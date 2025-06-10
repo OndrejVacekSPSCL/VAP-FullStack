@@ -89,7 +89,7 @@
 - **Status kódy:**  
   `201 Created`, `404 Not Found`, `500 Internal Server Error`
 
-  ## API Endpointy `/api/members`
+## API Endpointy `/api/members`
 
 ### 1. Získání všech členů
 - **URL:** `/api/members`
@@ -177,3 +177,83 @@
     ```
 - **Status kódy:**  
   `201 Created`, `404 Not Found`, `500 Internal Server Error`
+
+## API Endpointy `/api/task_assignments`
+
+### 1. Získání všech přiřazení (včetně detailů tasku a člena)
+- **URL:** `/api/task_assignments`
+- **Metoda:** `GET`
+- **Popis:** Vrátí všechna přiřazení úkolů členům včetně detailů úkolu a člena.
+- **Odpověď:**
+    ```json
+    [
+      {
+        "id": 1,
+        "task": {
+          "id": 2,
+          "title": "Název úkolu",
+          "status": "pending"
+        },
+        "member": {
+          "id": 3,
+          "firstname": "Jan",
+          "lastname": "Novák"
+        }
+      }
+    ]
+    ```
+- **Status kódy:**  
+  `200 OK`, `500 Internal Server Error`
+
+---
+
+### 2. Vytvoření nového přiřazení
+- **URL:** `/api/task_assignments`
+- **Metoda:** `POST`
+- **Popis:** Přiřadí úkol členovi.
+- **Tělo požadavku:**
+    ```json
+    {
+      "task_id": 2,
+      "member_id": 3
+    }
+    ```
+- **Odpověď:**
+    ```json
+    { "message": "Member assigned to task", "task_id": 2, "member_id": 3 }
+    ```
+- **Status kódy:**  
+  `200 OK`, `500 Internal Server Error`
+
+---
+
+### 3. Aktualizace přiřazení podle ID
+- **URL:** `/api/task_assignments/:id`
+- **Metoda:** `PUT`
+- **Popis:** Aktualizuje přiřazení (změní přiřazený úkol nebo člena).
+- **Tělo požadavku:**
+    ```json
+    {
+      "task_id": 2,
+      "member_id": 3
+    }
+    ```
+- **Odpověď:**
+    ```json
+    { "message": "Assignment updated" }
+    ```
+- **Status kódy:**  
+  `200 OK`, `404 Not Found`, `500 Internal Server Error`
+
+---
+
+### 4. Smazání přiřazení podle ID
+- **URL:** `/api/task_assignments/:id`
+- **Metoda:** `DELETE`
+- **Popis:** Smaže přiřazení podle ID.
+- **Odpověď:**
+    ```json
+    { "message": "Assignment deleted" }
+    ```
+- **Status kódy:**  
+  `200 OK`, `404 Not Found`, `500 Internal Server Error`

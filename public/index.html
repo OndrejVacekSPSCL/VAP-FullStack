@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evidence úkolů v týmu</title>
     <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
 </head>
 
 <body>
@@ -17,14 +18,14 @@
             <h3>Přidat nový úkol</h3>
             <form id="tasks-form">
                 <div> 
-                    <label for="title">Task name:</label>
+                    <label for="title">Název úkolu:</label>
                     <input type="text" id="title" name="title" required>
                 </div>
                 <div> 
                     <label for="status">Status:</label>
                     <textarea id="status" name="status" required></textarea>
                 </div>
-                <button type="submit">Create task</button>
+                <button type="submit">Vytvořit úkol</button>
             </form>
 
             <h3>Seznam úkolů</h3>
@@ -34,37 +35,37 @@
             <h3>Vyhledat úkol</h3>
             <form id="task-search">
                 <div> 
-                    <label for="task-id">Task id:</label>
+                    <label for="task-id">ID úkolu:</label>
                     <input type="number" id="task-id" name="task-id" required>
                 </div>
                 <p id="searched-task"> </p>
-                <button type="submit">Search task</button>
+                <button type="submit">Vyhledat úkol</button>
             </form>
 
             <h3>Aktualizovat úkol</h3>
             <form id="task-update">
                 <div> 
-                    <label for="update-task-id">Task id:</label>
+                    <label for="update-task-id">ID úkolu:</label>
                     <input type="number" id="update-task-id" name="update-task-id" required>
                 </div>
                 <div> 
-                    <label for="update-title">Task name:</label>
+                    <label for="update-title">Název úkolu:</label>
                     <input type="text" id="update-title" name="update-title" required>
                 </div>
                 <div> 
                     <label for="update-status">Status:</label>
                     <textarea id="update-status" name="update-status" required></textarea>
                 </div>
-                <button type="submit">Update task</button>
+                <button type="submit">Aktualizovat úkol</button>
             </form>
 
             <h3>Smazat úkol</h3>
             <form id="task-delete">
                 <div> 
-                    <label for="delete-task-id">Task id:</label>
+                    <label for="delete-task-id">ID úkolu:</label>
                     <input type="number" id="delete-task-id" name="delete-task-id" required>
                 </div>
-                <button type="submit">Delete task</button>
+                <button type="submit">Smazat úkol</button>
             </form>
         </section>
         <section id="members-section">
@@ -84,7 +85,7 @@
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <button type="submit">Create task</button>
+                <button type="submit">Vytvořit úkol</button>
             </form>
 
             <h3>Seznam osob</h3>
@@ -94,17 +95,17 @@
             <h3>Vyhledat osobu</h3>
             <form id="member-search">
                 <div> 
-                    <label for="member-id">Member id:</label>
+                    <label for="member-id">ID osoby:</label>
                     <input type="number" id="member-id" name="member-id" required>
                 </div>
                 <p id="searched-member"> </p>
-                <button type="submit">Search member</button>
+                <button type="submit">Vyhledat osoby</button>
             </form>
 
             <h3>Aktualizovat osobu</h3>
             <form id="member-update">
                 <div> 
-                    <label for="update-member-id">Member id:</label>
+                    <label for="update-member-id">ID osoby:</label>
                     <input type="number" id="update-member-id" name="update-member-id" required>
                 </div>
                 <div> 
@@ -119,35 +120,59 @@
                     <label for="update-email">E-mail:</label>
                     <input type="email" id="update-email" name="update-email" required>
                 </div>
-                <button type="submit">Update member</button>
+                <button type="submit">Aktualizovat osobu</button>
             </form>
 
             <h3>Smazat osobu</h3>
             <form id="member-delete">
                 <div> 
-                    <label for="delete-member-id">Member id:</label>
+                    <label for="delete-member-id">ID osoby:</label>
                     <input type="number" id="delete-member-id" name="delete-member-id" required>
                 </div>
-                <button type="submit">Delete member</button>
+                <button type="submit">Smazat osobu</button>
             </form>
         </section>
         <section id="assignments-section">
-            <h2>Operace s Task Assignments</h2>
+            <h2>Operace s Přiřazeními</h2>
             <h3>Přiřadit úkol k osobě</h3>
             <form id="assignments-form">
                 <div>
-                    <label for="assignment-task-id">Task id:</label>
+                    <label for="assignment-task-id">ID úkolu:</label>
                     <input type="number" id="assignment-task-id" name="assignment-task-id" required>
                 </div>
                 <div>
-                    <label for="assignment-member-id">Member id:</label>
+                    <label for="assignment-member-id">ID osoby:</label>
                     <input type="number" id="assignment-member-id" name="assignment-member-id" required>
                 </div>
-                <button type="submit">Assign task to member</button>
+                <button type="submit">Přiřadit úkol k osobě</button>
             </form>
             <h3>Seznam přiřazení</h3>
             <ul id="assignments-list"> <!-- Seznam -->
             </ul>
+            <h3>Aktualizovat přiřazení</h3>
+            <form id="assignment-update">
+                <div>
+                    <label for="update-assignment-id">ID přiřazení:</label>
+                    <input type="number" id="update-assignment-id" name="assignment-id" required>
+                </div>
+                <div>
+                    <label for="update-assignment-task-id">ID úkolu:</label>
+                    <input type="number" id="update-assignment-task-id" name="assignment-task-id" required>
+                </div>
+                <div>
+                    <label for="update-assignment-member-id">ID osoby:</label>
+                    <input type="number" id="update-assignment-member-id" name="assignment-member-id" required>
+                </div>
+                <button type="submit">Aktualizovat přiřazení</button>
+            </form>
+            <h3>Smazat přiřazení</h3>
+            <form id="assignment-delete">
+                <div>  
+                    <label for="delete-assignment-id">ID přiřazení:</label>
+                    <input type="number" id="delete-assignment-id" name="delete-assignment-id" required>
+                </div>
+                <button type="submit">Smazat přiřazení</button>
+            </form>
         </section>
     </div>
 
@@ -208,7 +233,7 @@
             const task_id = document.getElementById('assignment-task-id').value;
             const member_id = document.getElementById('assignment-member-id').value;
             try {
-                const response = await fetch('/api/assignments', {
+                const response = await fetch('/api/task_assignments', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ task_id, member_id })
@@ -299,13 +324,13 @@
         //GET assignments
         async function fetchAssignments() {
             try {
-                const response = await fetch('/api/assignments');
+                const response = await fetch('/api/task_assignments');
                 const assignments = await response.json();
                 const assignmentsList = document.getElementById('assignments-list');
                 assignmentsList.innerHTML = '';
                 assignments.forEach(assignment => {
                     const li = document.createElement('li');
-                    li.innerHTML = `Úkol <strong>[${assignment.task.id}] ${assignment.task.title}</strong> přiřazen k osobě <strong>[${assignment.member.id}] ${assignment.member.firstname} ${assignment.member.lastname}</strong>`;
+                    li.innerHTML = `[${assignment.id}] Úkol <strong>${assignment.task_id}</strong> přiřazen k osobě <strong>${assignment.member_id}</strong>`;
                     assignmentsList.appendChild(li);
                 });
             } catch (error) {
@@ -361,6 +386,29 @@
             }
         });
 
+        //PUT assignment
+        document.getElementById('assignment-update').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('update-assignment-id').value;
+            const task_id = document.getElementById('update-assignment-task-id').value;
+            const member_id = document.getElementById('update-assignment-member-id').value;
+            try {
+                const response = await fetch(`/api/task_assignments/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ task_id, member_id })
+                });
+                if (response.ok) {
+                    document.getElementById('assignment-update').reset();
+                    fetchAssignments();
+                } else {
+                    alert('Chyba při aktualizaci přiřazení úkolu k osobě');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
+
     //mazání dat
         //DELETE task
         document.getElementById('task-delete').addEventListener('submit', async (e) => {
@@ -394,6 +442,24 @@
                     fetchMembers();
                 } else {
                     alert('Chyba při mazání osoby');
+                }
+            } catch (error) {
+                console.error('Chyba:', error);
+            }
+        });
+        //DELETE assignment
+        document.getElementById('assignment-delete').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('delete-assignment-id').value;
+            try {
+                const response = await fetch(`/api/task_assignments/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    document.getElementById('assignment-delete').reset();
+                    fetchAssignments();
+                } else {
+                    alert('Chyba při mazání přiřazení úkolu k osobě');
                 }
             } catch (error) {
                 console.error('Chyba:', error);
