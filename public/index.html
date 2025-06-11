@@ -5,177 +5,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evidence úkolů v týmu</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/normalize.css">
+    <link rel="stylesheet" href="assets/skeleton.css">
+
     <link rel="icon" type="image/png" href="assets/favicon.ico">
 </head>
 
 <body>
-    <h1>Task Management</h1>
-    <div class="columns">
-        <section id="tasks-section">
-            <h2>Operace s Tasks</h2>
-
-            <h3>Přidat nový úkol</h3>
-            <form id="tasks-form">
-                <div> 
-                    <label for="title">Název úkolu:</label>
-                    <input type="text" id="title" name="title" required>
+    <div class="container">
+        <h1>Task Management</h1>
+        <div class="row">
+            <section id="tasks-section" class="four columns">
+                <h2>Operace s Tasks</h2>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Přidat nový úkol</h3>
+                    <form id="tasks-form">
+                        <div class="row">
+                            <div class="six columns">
+                                <label for="title">Název úkolu:</label>
+                                <input class="u-full-width" type="text" id="title" name="title" required>
+                            </div>
+                            <div class="six columns">
+                                <label for="status">Status:</label>
+                                <textarea class="u-full-width" id="status" name="status" required></textarea>
+                            </div>
+                        </div>
+                        <button class="button-primary" type="submit">Vytvořit úkol</button>
+                    </form>
                 </div>
-                <div> 
-                    <label for="status">Status:</label>
-                    <textarea id="status" name="status" required></textarea>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Seznam úkolů</h3>
+                    <ul id="tasks-list"></ul>
                 </div>
-                <button type="submit">Vytvořit úkol</button>
-            </form>
-
-            <h3>Seznam úkolů</h3>
-            <ul id="tasks-list"> <!-- Seznam -->
-            </ul>
-
-            <h3>Vyhledat úkol</h3>
-            <form id="task-search">
-                <div> 
-                    <label for="task-id">ID úkolu:</label>
-                    <input type="number" id="task-id" name="task-id" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Vyhledat úkol</h3>
+                    <form id="task-search">
+                        <label for="task-id">ID úkolu:</label>
+                        <input class="u-full-width" type="number" id="task-id" name="task-id" required>
+                        <button class="button-primary" type="submit">Vyhledat úkol</button>
+                        <p id="searched-task"></p>
+                    </form>
                 </div>
-                <p id="searched-task"> </p>
-                <button type="submit">Vyhledat úkol</button>
-            </form>
-
-            <h3>Aktualizovat úkol</h3>
-            <form id="task-update">
-                <div> 
-                    <label for="update-task-id">ID úkolu:</label>
-                    <input type="number" id="update-task-id" name="update-task-id" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Aktualizovat úkol</h3>
+                    <form id="task-update">
+                        <label for="update-task-id">ID úkolu:</label>
+                        <input class="u-full-width" type="number" id="update-task-id" name="update-task-id" required>
+                        <label for="update-title">Název úkolu:</label>
+                        <input class="u-full-width" type="text" id="update-title" name="update-title" required>
+                        <label for="update-status">Status:</label>
+                        <textarea class="u-full-width" id="update-status" name="update-status" required></textarea>
+                        <button class="button-primary" type="submit">Aktualizovat úkol</button>
+                    </form>
                 </div>
-                <div> 
-                    <label for="update-title">Název úkolu:</label>
-                    <input type="text" id="update-title" name="update-title" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Smazat úkol</h3>
+                    <form id="task-delete">
+                        <label for="delete-task-id">ID úkolu:</label>
+                        <input class="u-full-width" type="number" id="delete-task-id" name="delete-task-id" required>
+                        <button class="button-primary" type="submit">Smazat úkol</button>
+                    </form>
                 </div>
-                <div> 
-                    <label for="update-status">Status:</label>
-                    <textarea id="update-status" name="update-status" required></textarea>
+            </section>
+            <section id="members-section" class="four columns">
+                <h2>Operace s Members</h2>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Přidat novou osobu</h3>
+                    <form id="members-form">
+                        <label for="firstname">Jméno:</label>
+                        <input class="u-full-width" type="text" id="firstname" name="firstname" required>
+                        <label for="lastname">Příjmení:</label>
+                        <input class="u-full-width" type="text" id="lastname" name="lastname" required>
+                        <label for="email">E-mail:</label>
+                        <input class="u-full-width" type="email" id="email" name="email" required>
+                        <button class="button-primary" type="submit">Vytvořit osobu</button>
+                    </form>
                 </div>
-                <button type="submit">Aktualizovat úkol</button>
-            </form>
-
-            <h3>Smazat úkol</h3>
-            <form id="task-delete">
-                <div> 
-                    <label for="delete-task-id">ID úkolu:</label>
-                    <input type="number" id="delete-task-id" name="delete-task-id" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Seznam osob</h3>
+                    <ul id="members-list"></ul>
                 </div>
-                <button type="submit">Smazat úkol</button>
-            </form>
-        </section>
-        <section id="members-section">
-            <h2>Operace s Members</h2>
-
-            <h3>Přidat novou osobu</h3>
-            <form id="members-form">
-                <div> 
-                    <label for="firstname">Jméno:</label>
-                    <input type="text" id="firstname" name="firstname" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Vyhledat osobu</h3>
+                    <form id="member-search">
+                        <label for="member-id">ID osoby:</label>
+                        <input class="u-full-width" type="number" id="member-id" name="member-id" required>
+                        <button class="button-primary" type="submit">Vyhledat osobu</button>
+                        <p id="searched-member"></p>
+                    </form>
                 </div>
-                <div> 
-                    <label for="lastname">Příjmení:</label>
-                    <input type="text" id="lastname" name="lastname" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Aktualizovat osobu</h3>
+                    <form id="member-update">
+                        <label for="update-member-id">ID osoby:</label>
+                        <input class="u-full-width" type="number" id="update-member-id" name="update-member-id" required>
+                        <label for="update-firstname">Jméno:</label>
+                        <input class="u-full-width" type="text" id="update-firstname" name="update-firstname" required>
+                        <label for="update-lastname">Příjmení:</label>
+                        <input class="u-full-width" type="text" id="update-lastname" name="update-lastname" required>
+                        <label for="update-email">E-mail:</label>
+                        <input class="u-full-width" type="email" id="update-email" name="update-email" required>
+                        <button class="button-primary" type="submit">Aktualizovat osobu</button>
+                    </form>
                 </div>
-                <div> 
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Smazat osobu</h3>
+                    <form id="member-delete">
+                        <label for="delete-member-id">ID osoby:</label>
+                        <input class="u-full-width" type="number" id="delete-member-id" name="delete-member-id" required>
+                        <button class="button-primary" type="submit">Smazat osobu</button>
+                    </form>
                 </div>
-                <button type="submit">Vytvořit úkol</button>
-            </form>
-
-            <h3>Seznam osob</h3>
-            <ul id="members-list"> <!-- Seznam -->
-            </ul>
-
-            <h3>Vyhledat osobu</h3>
-            <form id="member-search">
-                <div> 
-                    <label for="member-id">ID osoby:</label>
-                    <input type="number" id="member-id" name="member-id" required>
+            </section>
+            <section id="assignments-section" class="four columns">
+                <h2>Operace s Přiřazeními</h2>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Přiřadit úkol k osobě</h3>
+                    <form id="assignments-form">
+                        <label for="assignment-task-id">ID úkolu:</label>
+                        <input class="u-full-width" type="number" id="assignment-task-id" name="assignment-task-id" required>
+                        <label for="assignment-member-id">ID osoby:</label>
+                        <input class="u-full-width" type="number" id="assignment-member-id" name="assignment-member-id" required>
+                        <button class="button-primary" type="submit">Přiřadit úkol k osobě</button>
+                    </form>
                 </div>
-                <p id="searched-member"> </p>
-                <button type="submit">Vyhledat osoby</button>
-            </form>
-
-            <h3>Aktualizovat osobu</h3>
-            <form id="member-update">
-                <div> 
-                    <label for="update-member-id">ID osoby:</label>
-                    <input type="number" id="update-member-id" name="update-member-id" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Seznam přiřazení</h3>
+                    <ul id="assignments-list"></ul>
                 </div>
-                <div> 
-                    <label for="update-firstname">Jméno:</label>
-                    <input type="text" id="update-firstname" name="update-firstname" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Aktualizovat přiřazení</h3>
+                    <form id="assignment-update">
+                        <label for="update-assignment-id">ID přiřazení:</label>
+                        <input class="u-full-width" type="number" id="update-assignment-id" name="assignment-id" required>
+                        <label for="update-assignment-task-id">ID úkolu:</label>
+                        <input class="u-full-width" type="number" id="update-assignment-task-id" name="assignment-task-id" required>
+                        <label for="update-assignment-member-id">ID osoby:</label>
+                        <input class="u-full-width" type="number" id="update-assignment-member-id" name="assignment-member-id" required>
+                        <button class="button-primary" type="submit">Aktualizovat přiřazení</button>
+                    </form>
                 </div>
-                <div> 
-                    <label for="update-lastname">Příjmení:</label>
-                    <input type="text" id="update-lastname" name="update-lastname" required>
+                <div style="border:1px solid #e1e1e1; border-radius:6px; padding:1rem; margin-bottom:1.5rem; background:#fcfcfc;">
+                    <h3>Smazat přiřazení</h3>
+                    <form id="assignment-delete">
+                        <label for="delete-assignment-id">ID přiřazení:</label>
+                        <input class="u-full-width" type="number" id="delete-assignment-id" name="delete-assignment-id" required>
+                        <button class="button-primary" type="submit">Smazat přiřazení</button>
+                    </form>
                 </div>
-                <div> 
-                    <label for="update-email">E-mail:</label>
-                    <input type="email" id="update-email" name="update-email" required>
-                </div>
-                <button type="submit">Aktualizovat osobu</button>
-            </form>
-
-            <h3>Smazat osobu</h3>
-            <form id="member-delete">
-                <div> 
-                    <label for="delete-member-id">ID osoby:</label>
-                    <input type="number" id="delete-member-id" name="delete-member-id" required>
-                </div>
-                <button type="submit">Smazat osobu</button>
-            </form>
-        </section>
-        <section id="assignments-section">
-            <h2>Operace s Přiřazeními</h2>
-            <h3>Přiřadit úkol k osobě</h3>
-            <form id="assignments-form">
-                <div>
-                    <label for="assignment-task-id">ID úkolu:</label>
-                    <input type="number" id="assignment-task-id" name="assignment-task-id" required>
-                </div>
-                <div>
-                    <label for="assignment-member-id">ID osoby:</label>
-                    <input type="number" id="assignment-member-id" name="assignment-member-id" required>
-                </div>
-                <button type="submit">Přiřadit úkol k osobě</button>
-            </form>
-            <h3>Seznam přiřazení</h3>
-            <ul id="assignments-list"> <!-- Seznam -->
-            </ul>
-            <h3>Aktualizovat přiřazení</h3>
-            <form id="assignment-update">
-                <div>
-                    <label for="update-assignment-id">ID přiřazení:</label>
-                    <input type="number" id="update-assignment-id" name="assignment-id" required>
-                </div>
-                <div>
-                    <label for="update-assignment-task-id">ID úkolu:</label>
-                    <input type="number" id="update-assignment-task-id" name="assignment-task-id" required>
-                </div>
-                <div>
-                    <label for="update-assignment-member-id">ID osoby:</label>
-                    <input type="number" id="update-assignment-member-id" name="assignment-member-id" required>
-                </div>
-                <button type="submit">Aktualizovat přiřazení</button>
-            </form>
-            <h3>Smazat přiřazení</h3>
-            <form id="assignment-delete">
-                <div>  
-                    <label for="delete-assignment-id">ID přiřazení:</label>
-                    <input type="number" id="delete-assignment-id" name="delete-assignment-id" required>
-                </div>
-                <button type="submit">Smazat přiřazení</button>
-            </form>
-        </section>
+            </section>
+        </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', fetchTasks);
         document.addEventListener('DOMContentLoaded', fetchMembers);
